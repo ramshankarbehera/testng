@@ -40,6 +40,8 @@ import java.util.List;
  */
 public class MethodInvocationHelper {
 
+  public static int size=0;
+
   protected static Object invokeMethodNoCheckedException(
       Method thisMethod, Object instance, List<Object> parameters) {
     try {
@@ -133,6 +135,11 @@ public class MethodInvocationHelper {
     return thisMethod.invoke(instance, parameters);
   }
 
+  public static void calculateData(int i)
+  {
+
+  }
+
   @SuppressWarnings("unchecked")
   protected static Iterator<Object[]> invokeDataProvider(
       Object instance,
@@ -144,6 +151,8 @@ public class MethodInvocationHelper {
     List<Object> parameters =
         getParameters(dataProvider, method, testContext, fedInstance, annotationFinder);
     Object result = invokeMethodNoCheckedException(dataProvider, instance, parameters);
+    // Size is being used to get the data provider lenght before you run the test case;
+    size =((Object[][]) result).length;
     if (result == null) {
       throw new TestNGException("Data Provider " + dataProvider + " returned a null value");
     }

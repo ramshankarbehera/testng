@@ -18,6 +18,14 @@ public @interface Test {
   /** The list of groups this class/method belongs to. */
   String[] groups() default {};
 
+  /** this method is making sure if multiple hodor id asigned to testng dataprovider */
+  boolean isMerge() default true;
+
+
+  /** The list of groups this class/method belongs to. */
+  String[] hodorId() default {};
+
+
   /** Whether methods on this class/method are enabled. */
   boolean enabled() default true;
 
